@@ -99,10 +99,11 @@ async function handlePrefixCommand(message, client) {
     if (!supportsPrefixExecution(command) || restriction.blocked) {
       if (restriction.blocked && restriction.reason) {
         const embed = createEmbed({
-          title: 'Slash Command Only',
-          description: `${restriction.reason}\nUse \`/${resolvedCommandName}\` instead.`,
+          title: '⚠️ Command Format Required',
+          description: `${restriction.reason}\n\n**Use slash command instead:**\n\`/${resolvedCommandName}\``,
           color: 'info',
         });
+        embed.setFooter({ text: 'Slash commands are more reliable and have better formatting.' });
         await message.channel.send({ embeds: [embed] }).catch(() => {});
       }
       return;
