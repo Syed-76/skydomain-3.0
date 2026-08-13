@@ -1,7 +1,7 @@
 {
-  "name": "titanbot",
-  "version": "2.1.0",
-  "description": "Modular Ultimate Community Bot by Touchpoint Support",
+  "name": "sky",
+  "version": "3.0.0",
+  "description": "Ultimate Discord Bot - Sky | Developed by Syed | Features: Moderation, Economy, Music, AI, and more",
   "main": "src/app.js",
   "type": "module",
   "scripts": {

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The TitanBot AI system provides intelligent chat, moderation, and analysis features powered by leading AI providers. This guide explains how to set up and use AI features.
+The Sky AI system provides intelligent chat, moderation, and analysis features powered by leading AI providers. This guide explains how to set up and use AI features.
 
 ## Quick Start
 

@@ -1,9 +1,11 @@
-# SKY - Ultimate Discord Bot
+# Sky - Ultimate Discord Bot
 
-**SKY** is a powerful, feature-rich Discord bot designed to enhance your server experience with comprehensive moderation tools, engaging economy systems, utility features, and much more. Built with modern Discord.js v14 and PostgreSQL for optimal performance and data persistence.
+**Sky** is a powerful, feature-rich Discord bot designed to enhance your server experience with comprehensive moderation tools, engaging economy systems, utility features, and much more. Built with modern Discord.js v14 and PostgreSQL for optimal performance and data persistence.
 
-[![Support Server](https://discord.gg/Nz4vC3PVYq
-)
+**Dev by Syed** ✨
+
+[![Support Server](https://img.shields.io/badge/-Support%20Server-%235865F2?logo=discord&logoColor=white&style=flat-square&logoWidth=20)](https://discord.gg/Nz4vC3PVYq)
+![Discord.js](https://img.shields.io/badge/-Discord.js%20v14-%235865F2?logo=discord&logoColor=white&style=flat-square&logoWidth=20)
 ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-%23336791?logo=postgresql&logoColor=white&style=flat-square&logoWidth=20)
 
 ## Table of Contents
@@ -18,7 +20,7 @@
 <a name="features-overview"></a>
 ## Features Overview
 
-SKY offers a complete suite of tools for Discord server management and community engagement:
+Sky offers a complete suite of tools for Discord server management and community engagement:
 
 <table>
 <tr>
@@ -94,25 +96,21 @@ SKY offers a complete suite of tools for Discord server management and community
 <a name="quick-setup"></a>
 ## Quick Setup (Recommended for non-coders)
 
-### Video Tutorial
-For a detailed step-by-step setup guide, watch our comprehensive video tutorial:
-[**TitanBot Setup Tutorial**](https://www.youtube.com/@TouchDisc)
-
 ## Docker Deployment (Recommended)
 
-TitanBot is fully containerized for easy deployment.
+Sky is fully containerized for easy deployment.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/codebymitch/TitanBot.git
-   cd TitanBot
+   git clone https://github.com/Syed-76/skydomain-3.0.git
+   cd skydomain-3.0
    ```
 
 2. **Configure environment variables:**
    ```bash
-   cp .env.example .env
+   cp .env.template .env
    ```
-   Set at minimum `DISCORD_TOKEN`, `CLIENT_ID`, and `GUILD_ID`. Docker Compose also reads `POSTGRES_USER`, `POSTGRES_PASSWORD`, and `POSTGRES_DB` from `.env` (defaults: `titanbot` / `password` / `titanbot`).
+   Set at minimum `DISCORD_TOKEN`. Docker Compose also reads `POSTGRES_USER`, `POSTGRES_PASSWORD`, and `POSTGRES_DB` from `.env` (defaults: `sky` / `password` / `sky`).
 
 3. **Build and start the containers:**
    ```bash
@@ -129,9 +127,9 @@ This starts the bot and PostgreSQL. The compose file sets `POSTGRES_SSL=false` a
 
 ### Music
 
-Music uses [Lavalink v4](https://github.com/lavalink-devs/Lavalink) via [Riffy](https://github.com/riffy-rb/riffy), similar to [Musicify](https://github.com/codebymitch/Musicify).
+Music uses Lavalink v4 via Riffy for high-quality audio streaming.
 
-1. By default, the bot loads multiple public v4 SSL nodes from [`lavalink/nodes.json`](lavalink/nodes.json) (sourced from [lavalink.darrennathanael.com](https://lavalink.darrennathanael.com/SSL/Lavalink-SSL/)). Edit that file to add or remove nodes.
+1. By default, the bot loads multiple public v4 SSL nodes from [`lavalink/nodes.json`](lavalink/nodes.json). Edit that file to add or remove nodes.
 2. To self-host Lavalink instead, run `docker compose --profile local-lavalink up -d` and set single-node env vars in `.env`:
    ```env
    LAVALINK_HOST=lavalink
@@ -148,7 +146,7 @@ Music uses [Lavalink v4](https://github.com/lavalink-devs/Lavalink) via [Riffy](
 The bot is automatically published to GitHub Container Registry on every push to main.
 
 ```bash
-docker pull ghcr.io/codebymitch/titanbot:main
+docker pull ghcr.io/Syed-76/skydomain-3.0:main
 ```
 
 <a name="manual-installation-steps"></a>
@@ -161,8 +159,8 @@ docker pull ghcr.io/codebymitch/titanbot:main
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/codebymitch/TitanBot.git
-   cd TitanBot
+   git clone https://github.com/Syed-76/skydomain-3.0.git
+   cd skydomain-3.0
    ```
 
 2. **Install Dependencies**
@@ -172,20 +170,18 @@ docker pull ghcr.io/codebymitch/titanbot:main
 
 3. **Configure Environment Variables**
    ```bash
-   cp .env.example .env
+   cp .env.template .env
    ```
    Edit `.env` with your configuration (only the following variables require configuration, leave remaining variables as default):
    ```env
    # Discord Bot Configuration
    DISCORD_TOKEN=your_discord_bot_token_here
-   CLIENT_ID=your_discord_client_id_here
-   GUILD_ID=your_discord_guild_id_here
 
    # PostgreSQL Configuration (Primary Database)
-   POSTGRES_URL=postgresql://postgres:yourpassword@localhost:5432/titanbot
+   DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/sky
    POSTGRES_HOST=localhost
    POSTGRES_PORT=5432
-   POSTGRES_DB=titanbot
+   POSTGRES_DB=sky
    POSTGRES_USER=postgres
    POSTGRES_PASSWORD=yourpassword
    ```
@@ -194,7 +190,7 @@ docker pull ghcr.io/codebymitch/titanbot:main
    - `NODE_ENV=production`
    - `LOG_LEVEL=warn` for a clean production console (critical issues + startup status)
    - `LOG_LEVEL=info` if you want more detailed operational logs
-   - If your chosen `PORT` is already used, TitanBot automatically tries the next port(s)
+   - If your chosen `PORT` is already used, Sky automatically tries the next port(s)
 
    Environment options reference:
    - `NODE_ENV`: `development`, `production`, `test` (any non-`production` value is treated as non-production)
@@ -225,10 +221,10 @@ Notes:
 4. **Setup PostgreSQL Database** (Optional but recommended)
    ```bash
    # Create database and user
-   createdb titanbot
-   createuser titanbot
-   psql -c "ALTER USER titanbot PASSWORD 'yourpassword';"
-   psql -c "GRANT ALL PRIVILEGES ON DATABASE titanbot TO titanbot;"
+   createdb sky
+   createuser sky
+   psql -c "ALTER USER sky PASSWORD 'yourpassword';"
+   psql -c "GRANT ALL PRIVILEGES ON DATABASE sky TO sky;"
    ```
 
 5. **Verify Database Setup**
@@ -249,7 +245,7 @@ Notes:
 <a name="bot-intents"></a>
 
 ## Required Bot Intents
-TitanBot requires the following Discord intents:
+Sky requires the following Discord intents:
 - **Guilds**
 - **Guild Messages**
 - **Message Content**
@@ -277,10 +273,14 @@ TitanBot requires the following Discord intents:
 
 ## License
 
-TitanBot is released under the MIT License. See [LICENSE](LICENSE) for details.
+Sky is released under the MIT License. See [LICENSE](LICENSE) for details.
 
-## Thank You
+## Credits
 
-Thank you for choosing TitanBot for your Discord server! We're constantly working to improve and add new features based on community feedback.
+**Developed by Syed** ✨
 
-*Last updated: May 2026*
+Thank you for choosing Sky for your Discord server! We're constantly working to improve and add new features based on community feedback.
+
+**Join our Support Server:** https://discord.gg/Nz4vC3PVYq
+
+*Last updated: August 2026*

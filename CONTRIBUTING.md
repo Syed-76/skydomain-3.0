@@ -1,6 +1,8 @@
-# Contributing to TitanBot
+# Contributing to Sky
 
-Thank you for your interest in contributing to TitanBot! This guide covers local setup, project conventions, and what we look for in pull requests.
+Thank you for your interest in contributing to Sky! This guide covers local setup, project conventions, and what we look for in pull requests.
+
+**Developed by Syed** ✨
 
 ## Ways to Contribute
 
@@ -8,7 +10,7 @@ Thank you for your interest in contributing to TitanBot! This guide covers local
 - New commands or enhancements to existing features
 - Documentation updates
 
-Before starting large features, open an issue or discuss in the [support server](https://discord.gg/8kJBYhTGW9) so we can align on scope and avoid duplicate work.
+Before starting large features, open an issue or discuss in the [support server](https://discord.gg/Nz4vC3PVYq) so we can align on scope and avoid duplicate work.
 
 ## Getting Started
 
@@ -55,7 +57,7 @@ Use descriptive branch names, for example:
 
 ## Database & Migrations
 
-TitanBot uses PostgreSQL as its primary store. If PostgreSQL is unreachable at startup, the bot can operate in a **degraded in-memory mode** — but that mode is not suitable for production and should not be the only way you test persistence-related changes.
+Sky uses PostgreSQL as its primary store. If PostgreSQL is unreachable at startup, the bot can operate in a **degraded in-memory mode** — but that mode is not suitable for production and should not be the only way you test persistence-related changes.
 
 Useful commands:
 

@@ -19,7 +19,7 @@ import { initializeAIFromConfig } from './services/aiService.js';
 import pkg from '../package.json' with { type: 'json' };
 import { EXPECTED_SCHEMA_VERSION, EXPECTED_SCHEMA_LABEL } from './config/database/schemaVersion.js';
 
-class TitanBot extends Client {
+class Sky extends Client {
   constructor() {
     super({
       intents: [
@@ -51,7 +51,7 @@ class TitanBot extends Client {
 
   async start() {
     try {
-      startupLog('Starting TitanBot...');
+      startupLog('Starting Sky...');
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       startupLog('Initializing database...');
@@ -211,7 +211,7 @@ class TitanBot extends Client {
 
     app.get('/', (req, res) => {
       res.status(200).json({ 
-        message: 'TitanBot System Online',
+        message: 'Sky System Online',
         version: pkg.version,
         timestamp: new Date().toISOString()
       });
@@ -395,7 +395,7 @@ class TitanBot extends Client {
 }
 
 try {
-  const bot = new TitanBot();
+  const bot = new Sky();
   
   const setupShutdown = () => {
     process.on('SIGTERM', () => bot.shutdown('SIGTERM'));
@@ -435,4 +435,4 @@ try {
   process.exit(1);
 }
 
-export default TitanBot;
+export default Sky;
