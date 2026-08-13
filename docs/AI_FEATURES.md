@@ -56,6 +56,93 @@ Choose one of the supported AI providers:
 4. Copy and save
 ```
 
+#### **Google AI Studio** - NEW & IMPROVED Gemini
+- 🌐 Website: https://aistudio.google.com/app/apikey
+- 💰 Pricing: Free tier available (1000 requests/day)
+- ⚡ Speed: Fast
+- 🎯 Best for: Modern Gemini models, better than legacy
+- Models: `gemini-1.5-pro`, `gemini-1.5-flash`
+- 🆕 **Recommended over legacy Gemini**
+
+```bash
+# Steps:
+1. Go to https://aistudio.google.com/app/apikey
+2. Sign in with Google (same as other Google services)
+3. Click "Create API Key"
+4. Copy and save
+```
+
+#### **Groq** - FASTEST Inference (⚡⚡⚡)
+- 🌐 Website: https://console.groq.com/keys
+- 💰 Pricing: Free tier with rate limits
+- ⚡ Speed: **100+ tokens/second** (BLAZING FAST!)
+- 🎯 Best for: Real-time chat, low latency
+- Models: `mixtral-8x7b-32768`, `llama2-70b-4096`
+
+```bash
+# Steps:
+1. Go to https://console.groq.com/keys
+2. Sign up (free)
+3. Go to API Keys section
+4. Create new key
+5. Copy and save
+```
+
+**Why Groq?** Fastest inference engine on the market. Perfect for Discord bots that need instant responses!
+
+#### **HuggingFace** - Open Source Models (🤗)
+- 🌐 Website: https://huggingface.co/settings/tokens
+- 💰 Pricing: Free tier available (PRO available)
+- ⚡ Speed: Medium
+- 🎯 Best for: Open-source models, customization
+- Models: 1000s available (Mistral, Llama, etc.)
+
+```bash
+# Steps:
+1. Go to https://huggingface.co/settings/tokens
+2. Sign up or log in
+3. Click "New token"
+4. Create with "read" access
+5. Copy and save
+```
+
+**Why HuggingFace?** Access to thousands of community-created models. Can use Mistral, Llama, Falcon, etc.
+
+#### **Tavily** - Web Search + AI (🔍)
+- 🌐 Website: https://app.tavily.com/home
+- 💰 Pricing: Free tier (1000 searches/month)
+- ⚡ Speed: Medium
+- 🎯 Best for: Web search integration, research
+- Models: `tavily-search`, `tavily-qna`
+
+```bash
+# Steps:
+1. Go to https://app.tavily.com/home
+2. Sign up (free with Google)
+3. Go to API keys
+4. Copy your API key
+5. Save it
+```
+
+**Why Tavily?** Augment AI responses with real-time web search. Your bot can access current information!
+
+## Quick Comparison
+
+| Provider | Best For | Speed | Cost | Free Tier | Setup |
+|----------|----------|-------|------|-----------|-------|
+| **OpenAI** | Best overall, most accurate | ⚡⚡⚡ | $$ | Limited | Easy |
+| **Claude** | Reasoning, creativity | ⚡⚡ | $$ | Limited | Easy |
+| **Google AI Studio** | Modern, free tier | ⚡⚡⚡ | Free | 1000/day | Easy |
+| **Groq** | ⚡⚡⚡ **FASTEST** | ⚡⚡⚡⚡⚡ | Free | Yes | Easy |
+| **HuggingFace** | Open-source models | ⚡⚡ | Free | Yes | Medium |
+| **Tavily** | Web search integration | ⚡⚡ | Free | Yes (1000/mo) | Easy |
+
+**Recommendation for Discord Bot:**
+- 🏆 **Best Overall**: OpenAI (gpt-3.5-turbo)
+- ⚡ **Fastest Response**: Groq (mixtral-8x7b)
+- 💰 **Cheapest/Free**: Google AI Studio or Groq
+- 🔍 **With Web Search**: Tavily
+
 ### 2. Configure Environment Variables
 
 Add these to your `.env` file:
@@ -71,10 +158,30 @@ AI_PROVIDER=claude
 AI_API_KEY=sk-ant-YOUR_KEY_HERE
 AI_MODEL=claude-3-opus-20240229
 
-# For Gemini
+# For Gemini (legacy)
 AI_PROVIDER=gemini
 AI_API_KEY=AIza-YOUR_KEY_HERE
 AI_MODEL=gemini-pro
+
+# For Google AI Studio (RECOMMENDED)
+AI_PROVIDER=google-ai
+AI_API_KEY=AIza-YOUR_KEY_HERE
+AI_MODEL=gemini-1.5-pro
+
+# For Groq (FASTEST - ⚡)
+AI_PROVIDER=groq
+AI_API_KEY=gsk-YOUR_KEY_HERE
+AI_MODEL=mixtral-8x7b-32768
+
+# For HuggingFace
+AI_PROVIDER=huggingface
+AI_API_KEY=hf-YOUR_KEY_HERE
+AI_MODEL=mistral/Mistral-7B-Instruct-v0.1
+
+# For Tavily (Web Search)
+AI_PROVIDER=tavily
+AI_API_KEY=tvly-YOUR_KEY_HERE
+AI_MODEL=tavily-search
 ```
 
 ### 3. Restart Your Bot
@@ -325,10 +432,49 @@ AI_TEMPERATURE=0.7          # 0=deterministic, 1=creative
 - Claude 3 Sonnet: $0.003 per 1K input, $0.015 per 1K output
 - 💡 Similar pricing to OpenAI
 
-### Google Gemini
+### Google Gemini (Legacy)
 - Free tier: 60 requests/minute
 - Paid: $0.0005 per input, $0.0015 per output
 - 💡 Most affordable option
+
+### Google AI Studio ✨ RECOMMENDED
+- Free tier: 1000 requests/day
+- Paid: $0.0005 per 1K tokens (input), $0.0015 per 1K tokens (output)
+- 💡 Same pricing as legacy Gemini, but with better models!
+
+### Groq ⚡ FASTEST & FREE
+- Free tier: Unlimited (with rate limits: ~1000/month recommended)
+- Paid: Available for higher volumes
+- 💡 **Best for Discord bots** - Fast and free!
+- 🏆 No per-request costs, just rate limits
+
+### HuggingFace 🤗
+- Free tier: Available (inference API)
+- PRO: $9/month for higher limits
+- 💡 Access to thousands of free open-source models
+- Models cost nothing, just pay for compute
+
+### Tavily 🔍
+- Free tier: 1000 searches/month
+- Paid: $20/month for unlimited
+- 💡 Best for adding web search to your bot
+- Great for research and real-time information
+
+## Cost Comparison for 1000 AI Interactions
+
+| Provider | 1000 Chats | Free Tier | Best For |
+|----------|-----------|-----------|----------|
+| OpenAI GPT-4 | ~$30 | ❌ | High quality, most accurate |
+| OpenAI GPT-3.5 | ~$2 | ❌ | Good balance |
+| Claude 3 Sonnet | ~$5 | ❌ | Creative tasks |
+| Google AI Studio | ~$2 | ✅ (1000/day) | **Free option** |
+| Groq | **FREE** | ✅ (unlimited*) | **Best for bots** |
+| HuggingFace | **FREE** | ✅ (unlimited) | Open-source preference |
+| Tavily | $0.20 per search | ✅ (1000/mo) | With web search |
+
+**Best Budget Option: Groq (FREE + FASTEST!)**
+**Best Quality: OpenAI GPT-4**
+**Best Free: Google AI Studio or Groq**
 
 ## Troubleshooting
 

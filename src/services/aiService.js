@@ -232,8 +232,14 @@ Respond with JSON: {
       return await this._callOpenAI(context, systemPrompt, userMessage);
     } else if (provider === 'claude') {
       return await this._callClaude(context, systemPrompt, userMessage);
-    } else if (provider === 'gemini') {
+    } else if (provider === 'gemini' || provider === 'google-ai') {
       return await this._callGemini(context, systemPrompt, userMessage);
+    } else if (provider === 'groq') {
+      return await this._callGroq(context, systemPrompt, userMessage);
+    } else if (provider === 'huggingface') {
+      return await this._callHuggingFace(context, systemPrompt, userMessage);
+    } else if (provider === 'tavily') {
+      return await this._callTavily(context, systemPrompt, userMessage);
     } else {
       throw new Error(`Unsupported AI provider: ${provider}`);
     }
@@ -264,6 +270,30 @@ Respond with JSON: {
     logger.debug('Gemini call with context:', context.length);
     // TODO: Implement actual Gemini API call
     throw new Error('Gemini integration not yet implemented. Please set up your API key in config.');
+  }
+
+  async _callGroq(context, systemPrompt, userMessage) {
+    // Groq - Fast inference engine
+    // https://console.groq.com/keys
+    logger.debug('Groq call with context:', context.length);
+    // TODO: Implement actual Groq API call via groq-sdk
+    throw new Error('Groq integration not yet implemented. Please set up your API key in config.');
+  }
+
+  async _callHuggingFace(context, systemPrompt, userMessage) {
+    // HuggingFace - Inference API
+    // https://huggingface.co/settings/tokens
+    logger.debug('HuggingFace call with context:', context.length);
+    // TODO: Implement actual HuggingFace API call
+    throw new Error('HuggingFace integration not yet implemented. Please set up your API key in config.');
+  }
+
+  async _callTavily(context, systemPrompt, userMessage) {
+    // Tavily - AI search and research engine
+    // https://app.tavily.com/home
+    logger.debug('Tavily call with context:', context.length);
+    // TODO: Implement actual Tavily API call for search-augmented responses
+    throw new Error('Tavily integration not yet implemented. Please set up your API key in config.');
   }
 }
 
