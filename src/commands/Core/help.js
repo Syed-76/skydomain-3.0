@@ -12,6 +12,7 @@ import {
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import { logger } from "../../utils/logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -117,9 +118,16 @@ export async function createInitialHelpMenu(client) {
         .setLabel("Report Bug")
         .setStyle(ButtonStyle.Danger);
 
+    const publicDashboardUrl = process.env.PUBLIC_DASHBOARD_URL || "https://github.com/Syed-76/skydomain-3.0";
+
     const supportButton = new ButtonBuilder()
         .setLabel("Support Server")
         .setURL("https://discord.gg/QnWNz2dKCE")
+        .setStyle(ButtonStyle.Link);
+
+    const publicDashboardButton = new ButtonBuilder()
+        .setLabel("Public Dashboard")
+        .setURL(publicDashboardUrl)
         .setStyle(ButtonStyle.Link);
 
     const selectRow = createSelectMenu(
@@ -130,6 +138,7 @@ export async function createInitialHelpMenu(client) {
 
     const buttonRow = new ActionRowBuilder().addComponents([
         bugReportButton,
+        publicDashboardButton,
         supportButton,
     ]);
 
