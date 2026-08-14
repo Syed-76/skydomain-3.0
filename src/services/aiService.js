@@ -3,7 +3,7 @@
  * Supports multiple AI providers and personalities
  */
 
-import { logger } from '../../utils/logger.js';
+import { logger } from '../utils/logger.js';
 
 const AI_CONFIG = {
   enabled: false,
