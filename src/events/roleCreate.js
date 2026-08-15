@@ -2,6 +2,7 @@ import { Events } from 'discord.js';
 import { logEvent, EVENT_TYPES } from '../services/loggingService.js';
 import { logger } from '../utils/logger.js';
 import { buildRoleAuditLines } from '../utils/logging/logEmbeds.js';
+import AntiNukeService from '../services/security/antiNukeService.js';
 
 export default {
   name: Events.GuildRoleCreate,
@@ -10,6 +11,15 @@ export default {
   async execute(role) {
     try {
       if (!role.guild) return;
+
+      // Trigger anti-nuke monitoring for role creation
+      await AntiNukeService.handleRoleMutation(
+        role.client,
+        role.guild,
+        role.createdBy?.id || null,
+        role.id,
+        'role_create'
+      );
 
       const lines = buildRoleAuditLines(role);
 

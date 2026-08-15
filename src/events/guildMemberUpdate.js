@@ -1,6 +1,7 @@
 import { Events } from 'discord.js';
 import { logEvent, EVENT_TYPES } from '../services/loggingService.js';
 import { logger } from '../utils/logger.js';
+import AntiModService from '../services/security/antiModService.js';
 
 export default {
   name: Events.GuildMemberUpdate,
@@ -29,6 +30,19 @@ export default {
         });
 
         return;
+      }
+
+      // Handle privilege escalation attempts (anti-mod logic)
+      const rolesChanged = oldMember.roles.cache.size !== newMember.roles.cache.size ||
+                          [...oldMember.roles.cache.keys()].some(id => !newMember.roles.cache.has(id)) ||
+                          [...newMember.roles.cache.keys()].some(id => !oldMember.roles.cache.has(id));
+
+      if (rolesChanged) {
+        await AntiModService.handlePrivilegeEscalation(
+          newMember.client,
+          oldMember,
+          newMember
+        );
       }
 
     } catch (error) {

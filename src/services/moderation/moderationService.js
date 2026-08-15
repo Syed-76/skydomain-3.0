@@ -176,6 +176,19 @@ export class ModerationService {
 
       await guild.members.ban(user.id, { reason });
 
+      // Trigger anti-nuke monitoring for ban action
+      try {
+        const AntiNukeService = await import('../security/antiNukeService.js').then(m => m.default);
+        await AntiNukeService.handleMassBan(
+          guild.client,
+          guild,
+          moderator.id,
+          user.id
+        );
+      } catch (error) {
+        logger.warn('Failed to trigger anti-nuke ban monitoring:', error.message);
+      }
+
       const caseId = await logModerationAction({
         client: guild.client,
         guild,

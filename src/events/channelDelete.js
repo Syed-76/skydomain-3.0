@@ -1,3 +1,4 @@
+import { Events } from 'discord.js';
 import { 
     getJoinToCreateConfig, 
     removeJoinToCreateTrigger,
@@ -7,10 +8,20 @@ import {
 } from '../utils/database.js';
 import { getServerCounters, saveServerCounters } from '../services/serverstatsService.js';
 import { logger } from '../utils/logger.js';
+import AntiNukeService from '../services/security/antiNukeService.js';
 
 export default {
     name: 'channelDelete',
     async execute(channel, client) {
+        if (!channel.guild) return;
+
+        // Trigger anti-nuke monitoring for channel deletion
+        await AntiNukeService.handleChannelMutation(
+            client,
+            channel.guild,
+            channel.id,
+            'channel_delete'
+        );
         
         if (channel.type === 0 && channel.guild) {
             try {
@@ -26,14 +37,13 @@ export default {
             }
         }
 
-if (channel.type !== 2 && channel.type !== 4) {
+        if (channel.type !== 2 && channel.type !== 4) {
             return;
         }
 
         const guildId = channel.guild.id;
 
         try {
-            
             const counters = await getServerCounters(client, guildId);
             const orphanedCounter = counters.find(c => c.channelId === channel.id);
             

@@ -465,6 +465,7 @@ export const botConfig = {
     verification: true,
     reactionRoles: true,
     joinToCreate: true,
+    security: true,
 
     // Utility/quality-of-life modules.
     voice: true,
@@ -542,6 +543,7 @@ const COMMAND_CATEGORY_FEATURE_MAP = {
   music: "music",
   reaction_roles: "reactionRoles",
   search: "search",
+  security: "security",
   serverstats: "counter",
   ticket: "tickets",
   tools: "tools",
