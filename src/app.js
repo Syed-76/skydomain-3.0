@@ -23,18 +23,14 @@ class Sky extends Client {
   constructor() {
     super({
       intents: [
-        
-        GatewayIntentBits.Guilds,                        
-        GatewayIntentBits.GuildMembers,                 
-
-        GatewayIntentBits.GuildMessages,                
-        GatewayIntentBits.GuildMessageReactions,        
-        GatewayIntentBits.MessageContent,               
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.MessageContent,
         GatewayIntentBits.DirectMessages,
-
-        GatewayIntentBits.GuildVoiceStates,             
-
-        GatewayIntentBits.GuildBans,                    
+        GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.GuildModeration,
       ],
     });
 
